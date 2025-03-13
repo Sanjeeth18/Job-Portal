@@ -58,7 +58,7 @@ const Footer = () => {
           </h2>
           <div className="flex space-x-4 text-2xl">
             <a
-              href="https://github.com"
+              href="https://github.com/Sanjeeth18/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-yellow-300 transition"
