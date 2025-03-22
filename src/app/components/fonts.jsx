@@ -1,5 +1,5 @@
-import {Playfair_Display} from 'next/font/google'
-export const playfair=Playfair_Display({
+import {Kanit} from 'next/font/google'
+export const kanit=Kanit({
     subsets:['latin'],
     weight:['400',"500",'600','700'],
     display:'swap',
