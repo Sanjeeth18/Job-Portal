@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { kanit } from "./fonts";
-import Image from "next/image";
-import logo from "@/app/assets/globe.svg";
 
 const Header = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -17,7 +15,7 @@ const Header = () => {
   return (
     <>
       <div
-        className={`border-b border-gray-300 bg-gradient-to-r from-blue-800 to-blue-900 text-white flex items-center justify-between py-6 px-6 md:px-12 shadow-md ${kanit.className}`}
+        className={`border-b-2 border-gray-300 bg-gradient-to-r from-blue-800 to-blue-900 text-white flex items-center justify-between py-6 px-6 md:px-12 shadow-md ${kanit.className}`}
       >
         {windowWidth > 1172 ? (
           <h1 className="font-extrabold w-[35vh] flex text-yellow-400 text-3xl md:text-4xl tracking-wide">
