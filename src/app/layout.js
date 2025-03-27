@@ -69,11 +69,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}  `}>
         <Header />
-        <div className="grid grid-cols-3 gap-4 h-screen fixed">
-          <div className=" w-full">
+        <div className="grid grid-cols-3 gap-4 h-full bg-gray-100">
+          <div className=" w-full h-full">
             <Profile />
           </div>
-          <div className=" w-full h-full">
+          <div className=" w-full">
             <Explore />
           </div>
           <div className=" w-full"><Suggestions/></div>

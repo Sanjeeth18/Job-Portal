@@ -26,7 +26,7 @@ function Suggestions() {
 
   const [followStatus, setFollowStatus] = useState({});
 
-  const handleFollowClick = (personId) => {  // Changed postId to personId
+  const handleFollowClick = (personId) => {  
     setFollowStatus(prev => ({
       ...prev,
       [personId]: !prev[personId]
@@ -34,7 +34,7 @@ function Suggestions() {
   };
 
   return (
-    <div className="p-6 rounded-lg shadow-lg w-full max-w-sm">
+    <div className="p-6 my-6 rounded-lg shadow-lg w-full max-w-sm bg-white">
       <h2 className="text-lg font-semibold text-gray-800 mb-4 underline" >People You May Know</h2>
       <div className="space-y-4">
         {peoples.map((person) => (
@@ -49,7 +49,11 @@ function Suggestions() {
             <div className="ml-4 flex-1">
               <h3 className="text-md font-bold text-gray-800">{person.name}</h3>
               {followStatus[person.id] ? (
-                <span className="mt-2 text-green-500">Requested</span>
+                <button
+                  onClick={() => handleFollowClick(person.id)}
+                  className="mt-2 text-white px-4 py-1 rounded-lg  bg-green-500 hover:bg-green-600 "
+                >
+                  Requested</button>
               ) : (
                 <button
                   onClick={() => handleFollowClick(person.id)}

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react"; 
+import React, { useRef, useState } from "react";
 import profileOne from "@/app/assets/profile_one.jpg";
 import profileTwo from "@/app/assets/profile_two.jpg";
 import profileThree from "@/app/assets/profile_three.jpg";
@@ -11,6 +11,9 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import like from'@/app/assets/like.svg'
+import share from '@/app/assets/share.svg'
+import comment from '@/app/assets/comment.svg'
 
 function Explore() {
   const prevRef = useRef(null);
@@ -22,7 +25,8 @@ function Explore() {
       id: 1,
       profileName: "John Doe",
       profilePhoto: profileOne,
-      about: "I'm a software engineer specializing in front-end development. I love building intuitive and user-friendly web applications.",
+      about:
+        "I'm a software engineer specializing in front-end development. I love building intuitive and user-friendly web applications.",
       postCaption: "Excited to share my latest project with you all! 🚀",
       postImage: postOne,
       postVideo: null,
@@ -31,8 +35,10 @@ function Explore() {
       id: 2,
       profileName: "Jane Smith",
       profilePhoto: profileTwo,
-      about: "I'm a software engineer specializing in front-end development. I love building intuitive and user-friendly web applications.",
-      postCaption: "Had an amazing experience at the tech conference today! #Tech2025",
+      about:
+        "I'm a software engineer specializing in front-end development. I love building intuitive and user-friendly web applications.",
+      postCaption:
+        "Had an amazing experience at the tech conference today! #Tech2025",
       postImage: [postTwo, profileOne],
       postVideo: "https://www.w3schools.com/html/mov_bbb.mp4",
     },
@@ -40,24 +46,29 @@ function Explore() {
       id: 3,
       profileName: "Michael Johnson",
       profilePhoto: profileThree,
-      about: "I'm a software engineer specializing in front-end development. I love building intuitive and user-friendly web applications.",
-      postCaption: "Learning Next.js has been a game-changer! Highly recommend it. 🔥",
+      about:
+        "I'm a software engineer specializing in front-end development. I love building intuitive and user-friendly web applications.",
+      postCaption:
+        "Learning Next.js has been a game-changer! Highly recommend it. 🔥",
       postImage: null,
       postVideo: "https://www.w3schools.com/html/movie.mp4",
     },
   ];
 
   const handleFollowClick = (postId) => {
-    setFollowStatus(prev => ({
+    setFollowStatus((prev) => ({
       ...prev,
-      [postId]: !prev[postId]
+      [postId]: !prev[postId],
     }));
   };
 
   return (
-    <div className="my-2 overflow-y-scroll w-full scrollbar-hide h-[83vh]">
+    <div className="my-6 rounded-lg overflow-y-scroll w-full scrollbar-hide bg-white h-[100vh]">
       {posts.map((post) => (
-        <div key={post.id} className="border border-gray-200 p-4 rounded-lg mb-4 shadow-lg">
+        <div
+          key={post.id}
+          className="border border-gray-200 p-4 rounded-lg mb-4 shadow-lg"
+        >
           <div className="flex justify-between items-center mb-2">
             <div className="flex items-center w-auto mr-3">
               <Image
@@ -72,19 +83,14 @@ function Explore() {
             </div>
             <div
               className={`font-bold text-sm w-full hover:cursor-pointer flex items-center justify-center
-                ${followStatus[post.id]
-                  ? 'text-green-600 hover:text-green-800'
-                  : 'text-blue-600 hover:text-blue-800'}`}
+                ${
+                  followStatus[post.id]
+                    ? "text-green-600 hover:text-green-800"
+                    : "text-blue-600 hover:text-blue-800"
+                }`}
               onClick={() => handleFollowClick(post.id)}
             >
-              {followStatus[post.id] ? (
-                <>
-
-                  Requested
-                </>
-              ) : (
-                '+ Follow'
-              )}
+              {followStatus[post.id] ? <>Requested</> : "+ Follow"}
             </div>
           </div>
 
@@ -118,13 +124,31 @@ function Explore() {
                 ))}
               </Swiper>
 
-              <button ref={prevRef} className="absolute top-1/2 left-2 z-10 bg-gray-700 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+              <button
+                ref={prevRef}
+                className="absolute top-1/2 left-2 z-10 bg-gray-700 p-2 rounded-full"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="white"
+                >
                   <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
                 </svg>
               </button>
-              <button ref={nextRef} className="absolute top-1/2 right-2 z-10 bg-gray-700 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+              <button
+                ref={nextRef}
+                className="absolute top-1/2 right-2 z-10 bg-gray-700 p-2 rounded-full"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="white"
+                >
                   <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                 </svg>
               </button>
@@ -132,7 +156,16 @@ function Explore() {
           )}
 
           {!Array.isArray(post.postImage) && post.postImage && (
-            <Image src={post.postImage} alt="Post" className="rounded-lg mt-2" />
+            <div>
+              <Image
+                src={post.postImage}
+                alt="Post"
+                className="rounded-lg mt-2"
+              />
+              <div><div>{/*need to import icons*/}
+                </div>
+                </div>{" "}
+            </div>
           )}
 
           {post.postVideo && !post.postImage && (
