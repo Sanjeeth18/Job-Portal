@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
           <div className=" w-full h-full">
             <Explore />
           </div>
-          <div className="border border-amber-100 w-full"><Suggestions/></div>
+          <div className=" w-full"><Suggestions/></div>
         </div>
 
         {children}

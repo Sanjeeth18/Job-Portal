@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react"; 
 import profileOne from "@/app/assets/profile_one.jpg";
 import profileTwo from "@/app/assets/profile_two.jpg";
 import profileThree from "@/app/assets/profile_three.jpg";
-
 import postOne from "@/app/assets/posts_one.jpg";
 import postTwo from "@/app/assets/posts_two.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,6 +15,7 @@ import "swiper/css/pagination";
 function Explore() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const [followStatus, setFollowStatus] = useState({});
 
   const posts = [
     {
@@ -47,19 +47,45 @@ function Explore() {
     },
   ];
 
+  const handleFollowClick = (postId) => {
+    setFollowStatus(prev => ({
+      ...prev,
+      [postId]: !prev[postId]
+    }));
+  };
+
   return (
-    <div className="my-2 bg-gray-100 overflow-y-scroll w-full scrollbar-hide h-[83vh]">
+    <div className="my-2 overflow-y-scroll w-full scrollbar-hide h-[83vh]">
       {posts.map((post) => (
-        <div key={post.id} className="border p-4 rounded-lg mb-4 shadow-lg">
+        <div key={post.id} className="border border-gray-200 p-4 rounded-lg mb-4 shadow-lg">
           <div className="flex justify-between items-center mb-2">
-            <div className="flex items-center">
-              <Image src={post.profilePhoto} alt={post.profileName} className="rounded-full object-cover w-10 h-10" />
+            <div className="flex items-center w-auto mr-3">
+              <Image
+                src={post.profilePhoto}
+                alt={post.profileName}
+                className="rounded-full  border-3 border-blue-500  object-cover w-10 h-10"
+              />
               <div className="flex flex-col w-[22vw] ml-3">
-                <span className="font-semibold">{post.profileName}</span>
+                <span className="font-semibold ">{post.profileName}</span>
                 <span className="text-xs">{post.about}</span>
               </div>
             </div>
-            <div className="font-bold text-blue-600 text-sm">+ Follow</div>
+            <div
+              className={`font-bold text-sm w-full hover:cursor-pointer flex items-center justify-center
+                ${followStatus[post.id]
+                  ? 'text-green-600 hover:text-green-800'
+                  : 'text-blue-600 hover:text-blue-800'}`}
+              onClick={() => handleFollowClick(post.id)}
+            >
+              {followStatus[post.id] ? (
+                <>
+
+                  Requested
+                </>
+              ) : (
+                '+ Follow'
+              )}
+            </div>
           </div>
 
           <p className="mb-2">{post.postCaption}</p>
@@ -83,12 +109,15 @@ function Explore() {
               >
                 {post.postImage.map((image, index) => (
                   <SwiperSlide key={index}>
-                    <Image src={image} alt={`Post Image ${index + 1}`} className="rounded-lg w-full h-70 object-cover" />
+                    <Image
+                      src={image}
+                      alt={`Post Image ${index + 1}`}
+                      className="rounded-lg w-full h-70 object-cover"
+                    />
                   </SwiperSlide>
                 ))}
               </Swiper>
 
-              {/* Custom Navigation Buttons */}
               <button ref={prevRef} className="absolute top-1/2 left-2 z-10 bg-gray-700 p-2 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
                   <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
@@ -106,12 +135,11 @@ function Explore() {
             <Image src={post.postImage} alt="Post" className="rounded-lg mt-2" />
           )}
 
-          {/* Video */}
-            {post.postVideo && !post.postImage && (
-              <video controls className="w-full mt-2 rounded-lg">
-                <source src={post.postVideo} type="video/mp4" />
-              </video>
-            )}
+          {post.postVideo && !post.postImage && (
+            <video controls className="w-full mt-2 rounded-lg">
+              <source src={post.postVideo} type="video/mp4" />
+            </video>
+          )}
         </div>
       ))}
     </div>

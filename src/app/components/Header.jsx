@@ -18,7 +18,7 @@ const Header = () => {
         className={`border-b-2 border-gray-300 bg-gradient-to-r from-blue-800 to-blue-900 text-white flex items-center justify-between py-6 px-6 md:px-12 shadow-md ${kanit.className}`}
       >
         {windowWidth > 1172 ? (
-          <h1 className="font-extrabold w-[35vh] flex text-yellow-400 text-3xl md:text-4xl tracking-wide">
+          <h1 className="font-extrabold w-[35vh] flex text-yellow-400 text-3xl tracking-wide">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 -960 960 960"
