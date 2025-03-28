@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import profile_two from '@/app/assets/profile_two.jpg';
-import profile_one from '@/app/assets/profile_one.jpg';
-import profile_three from '@/app/assets/profile_three.jpg';
+import profile_two from "@/app/assets/profile_two.jpg";
+import profile_one from "@/app/assets/profile_one.jpg";
+import profile_three from "@/app/assets/profile_three.jpg";
 
 function Suggestions() {
   const peoples = [
@@ -26,19 +26,24 @@ function Suggestions() {
 
   const [followStatus, setFollowStatus] = useState({});
 
-  const handleFollowClick = (personId) => {  
-    setFollowStatus(prev => ({
+  const handleFollowClick = (personId) => {
+    setFollowStatus((prev) => ({
       ...prev,
-      [personId]: !prev[personId]
+      [personId]: !prev[personId],
     }));
   };
 
   return (
     <div className="p-6 my-6 rounded-lg overflow-y-scroll scrollbar-hide shadow-lg w-full max-w-sm bg-white">
-      <h2 className="text-lg font-semibold text-gray-800 mb-4 underline" >People You May Know</h2>
+      <h2 className="text-lg font-semibold text-gray-800 mb-4 underline underline-offset-2">
+        People You May Know
+      </h2>
       <div className="space-y-4">
         {peoples.map((person) => (
-          <div key={person.id} className="flex items-center bg-white p-4 rounded-lg shadow-md">
+          <div
+            key={person.id}
+            className="flex items-center bg-white p-4 rounded-lg shadow-md"
+          >
             <Image
               src={person.profilePhoto}
               alt={person.name}
@@ -53,7 +58,8 @@ function Suggestions() {
                   onClick={() => handleFollowClick(person.id)}
                   className="mt-2 text-white px-4 py-1 rounded-lg  bg-green-500 hover:bg-green-600 "
                 >
-                  Requested</button>
+                  Requested
+                </button>
               ) : (
                 <button
                   onClick={() => handleFollowClick(person.id)}

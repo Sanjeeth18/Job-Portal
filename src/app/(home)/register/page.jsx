@@ -1,18 +1,18 @@
 "use client";
+import React from "react";
 import { kanit } from "@/app/components/fonts";
 import Link from "next/link";
-import React from "react";
 
-const Login = () => {
+const Register = () => {
   return (
-    <div className="w-full flex flex-col max-w-md mx-auto p-6 my-3 border border-gray-300 bg-white rounded-lg shadow-lg ">
-      <h2 className="text-3xl text-center font-bold mb-4">Login</h2>
+    <div className="w-full max-w-md mx-auto p-6 my-3 border border-gray-300 bg-white rounded-lg shadow-lg">
+      <h2 className="text-3xl text-center font-bold mb-4">Register</h2>
 
       <button
         type="button"
         className={`w-full border border-gray-300 rounded p-2 flex items-center justify-center mb-4 hover:bg-gray-100 ${kanit.className}`}
         onClick={() => {
-          console.log("Sign in with Google clicked");
+          console.log("Sign up with Google clicked");
         }}
       >
         <div className="mr-2">
@@ -40,7 +40,7 @@ const Login = () => {
             />
           </svg>
         </div>
-        <div>Sign in with Google</div>
+        <div>Sign up with Google</div>
       </button>
 
       <div className="text-center mb-4 font-medium text-gray-500">or</div>
@@ -63,7 +63,7 @@ const Login = () => {
             id="username"
             placeholder="Username"
             className="mt-1 block w-full border border-gray-300 rounded p-2 
-              focus:outline-none focus:ring-1 focus:ring-blue-500"
+                focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -78,19 +78,30 @@ const Login = () => {
             id="password"
             placeholder="Password"
             className="mt-1 block w-full border border-gray-300 rounded p-2 
-              focus:outline-none focus:ring-1 focus:ring-blue-500"
+                focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
         </div>
-       <div className="flex flex-row justify-between"> 
-        <div className="text-sm underline underline-offset-1 ">
-        <Link href="/"> &lt;&lt; Back to Home</Link> 
-
+        <div className="mb-4">
+          <label
+            htmlFor="confirmPassword"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+            className="mt-1 block w-full border border-gray-300 rounded p-2 
+                focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
         </div>
+
         <div
-          className=" underline underline-offset-1 hover:cursor-pointer text-right mb-1 text-sm text-blue-600 hover:text-blue-900 "
+          className=" hover:cursor-pointer underline text-right mb-1 text-sm text-blue-600 hover:text-blue-900 "
         >
-          <Link href="/register">Already Register?</Link>
-        </div></div>
+        <Link href="/login"> &lt;&lt; Back to login</Link> 
+        </div>
         <button
           type="submit"
           className="w-full bg-blue-500 text-white rounded p-2 hover:bg-blue-600"
@@ -102,4 +113,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
