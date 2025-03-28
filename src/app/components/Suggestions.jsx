@@ -34,7 +34,7 @@ function Suggestions() {
   };
 
   return (
-    <div className="p-6 my-6 rounded-lg shadow-lg w-full max-w-sm bg-white">
+    <div className="p-6 my-6 rounded-lg overflow-y-scroll scrollbar-hide shadow-lg w-full max-w-sm bg-white">
       <h2 className="text-lg font-semibold text-gray-800 mb-4 underline" >People You May Know</h2>
       <div className="space-y-4">
         {peoples.map((person) => (

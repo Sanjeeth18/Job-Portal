@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { kanit } from "./fonts";
+import Link from "next/link";
 
 const Header = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -76,7 +77,7 @@ const Header = () => {
               <span className="pr-1">Network</span>
             </li>
             <li className="bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300 cursor-pointer">
-              Login
+              <Link href='/login'>Login</Link>
             </li>
           </ul>
         ) : (
